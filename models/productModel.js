@@ -30,7 +30,7 @@ var ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    qunatity: {
+    quantity: {
       type: Number,
       required: true,
     },
@@ -45,7 +45,7 @@ var ProductSchema = new mongoose.Schema(
       },
     ],
     color: [],
-    tags: [],
+    tags: String,
     ratings: [
       {
         star: Number,
