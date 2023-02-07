@@ -1,7 +1,7 @@
 const express = require("express");
 const {
   createCoupon,
-  getallCoupon,
+  getCoupons,
   updateCoupon,
   deleteCoupon,
 } = require("../controller/couponCtrl");
@@ -12,7 +12,7 @@ router.post("/", authMiddleware, isAdmin, createCoupon);
 
 router.put("/:id", authMiddleware, isAdmin, updateCoupon);
 
-router.get("/", authMiddleware, isAdmin, getallCoupon);
+router.get("/", authMiddleware, isAdmin, getCoupons);
 
 router.delete("/:id", authMiddleware, isAdmin, deleteCoupon);
 

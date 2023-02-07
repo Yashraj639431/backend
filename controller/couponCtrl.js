@@ -13,7 +13,7 @@ const createCoupon = asyncHandler(async (req, res) => {
 });
 
 // Get all Coupon
-const getallCoupon = asyncHandler(async (req, res) => {
+const getCoupons = asyncHandler(async (req, res) => {
   try {
     const coupon = await Coupon.find();
     res.json(coupon);
@@ -48,4 +48,4 @@ const deleteCoupon = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { createCoupon, getallCoupon, updateCoupon, deleteCoupon };
+module.exports = { createCoupon, getCoupons, updateCoupon, deleteCoupon };
