@@ -52,7 +52,7 @@ router.put(
   authMiddleware,
   isAdmin,
   updateOrderStatus
-); // Reset Password
+); // Update Order Status 
 router.put("/edit-user", authMiddleware, updatedaUser); // Update a User
 router.put("/save-address", authMiddleware, saveAddress); // Save Address
 router.put("/block-user/:id", authMiddleware, isAdmin, blockUser); // Block a User

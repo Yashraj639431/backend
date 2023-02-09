@@ -534,5 +534,5 @@ module.exports = {
   createOrder,
   getOrders,
   updateOrderStatus,
-  getallOrders
+  getallOrders,
 };
