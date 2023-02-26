@@ -24,6 +24,7 @@ const {
   getOrders,
   updateOrderStatus,
   getallOrders,
+  getOrderByUserId,
 } = require("../controller/userCtrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 const router = express.Router();
@@ -40,6 +41,7 @@ router.post("/cart/cash-order", authMiddleware, createOrder); // Create Order
 router.get("/all-users", getAllUser); // Get all User
 router.get("/get-orders", authMiddleware, getOrders); // Get Orders
 router.get("/getallorders", authMiddleware, isAdmin, getallOrders); // Get all Orders
+router.post("/getorderbyuser/:id", authMiddleware, isAdmin, getallOrders); // Get all Orders
 router.get("/refresh", handleRefreshToken); // Refresh Token
 router.delete("/logout", logout); // Logout
 router.get("/wishlist", authMiddleware, getwishlist); // Wishlist
