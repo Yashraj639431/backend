@@ -27,14 +27,18 @@ var blogSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    likes: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
-    dislikes: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    dislikes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
     author: {
       type: String,
       default: "Admin",
@@ -48,7 +52,7 @@ var blogSchema = new mongoose.Schema(
     toObject: {
       virtuals: true,
     },
-    timestamps:true,
+    timestamps: true,
   }
 );
 

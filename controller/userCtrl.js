@@ -1,16 +1,17 @@
 const User = require("../models/userModel");
+const Product = require("../models/productModel");
+const Cart = require("../models/cartModel");
+const Coupon = require("../models/couponModel");
+const Order = require("../models/orderModel");
+const uniqid = require("uniqid");
+
 const asyncHandler = require("express-async-handler");
 const { generateToken } = require("../config/jwtoken");
 const validateMongoDbId = require("../utils/validateMongodbid");
 const { generateRefreshToken } = require("../config/refreshtoken");
-const Cart = require("../models/cartModel");
-const Order = require("../models/orderModel");
-const Product = require("../models/productModel");
-const Coupon = require("../models/couponModel");
+const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("./emailCtrl");
-const crypto = require("crypto");
-const uniqid = require("uniqid");
 
 // Create a User
 const createUser = asyncHandler(async (req, res) => {
@@ -178,7 +179,7 @@ const saveAddress = asyncHandler(async (req, res) => {
 // Get All Users
 const getAllUser = asyncHandler(async (req, res) => {
   try {
-    const getUsers = await User.find();
+    const getUsers = await User.find().populate("wishlist");
     res.json(getUsers);
   } catch (error) {
     throw new Error(error);
@@ -247,7 +248,9 @@ const unblockUser = asyncHandler(async (req, res) => {
         new: true,
       }
     );
-    res.json(unblock);
+    res.json({
+      message: "User Unblocked",
+    });
   } catch (error) {
     throw new Error(error);
   }
@@ -392,9 +395,9 @@ const applyCoupon = asyncHandler(async (req, res) => {
     throw new Error("Invalid Coupon");
   }
   const user = await User.findOne({ _id });
-  const { cartTotal } = await Cart.findOne({
+  let { cartTotal } = await Cart.findOne({
     orderby: user._id,
-  });
+  }).populate("products.product");
 
   const totalAfterDiscount = (
     cartTotal -
@@ -452,6 +455,7 @@ const createOrder = asyncHandler(async (req, res) => {
         },
       };
     });
+    
     const updated = await Product.bulkWrite(update, {});
     res.json({ message: "success" });
   } catch (error) {

@@ -28,9 +28,10 @@ const updateBlog = asyncHandler(async (req, res) => {
   }
 });
 
-// Fetch a Blog
+// Get a Blog
 const getBlog = asyncHandler(async (req, res) => {
   const { id } = req.params;
+  validateMongoDbId(id);
   try {
     const getBlog = await Blog.findById(id)
       .populate("likes")

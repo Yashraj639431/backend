@@ -23,8 +23,8 @@ router.put(
   uploadImages
 );
 
-router.put("/likes", authMiddleware, isAdmin, likeBlog);
-router.put("/dislikes", authMiddleware, isAdmin, dislikeBlog);
+router.put("/likes", authMiddleware, likeBlog);
+router.put("/dislikes", authMiddleware, dislikeBlog);
 
 router.put("/:id", authMiddleware, isAdmin, updateBlog);
 
