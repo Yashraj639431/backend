@@ -197,8 +197,8 @@ const uploadImages = asyncHandler(async (req, res) => {
     const files = req.files;
     for (const file of files) {
       const { path } = file;
-      const newPath = await uploader(path);
-      urls.push(newPath);
+      const newpath = await uploader(path);
+      urls.push(newpath);
       fs.unlinkSync(path);
     }
     const findBlog = await Blog.findByIdAndUpdate(
