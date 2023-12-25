@@ -23,7 +23,7 @@ dbConnect();
 app.use(morgan("dev"));
 app.use(
   cors({
-    origin: [],
+    origin: ["https://backend-chi-vert.vercel.app/"],
     methods: ["POST", "GET"],
     credentials: true,
   })
