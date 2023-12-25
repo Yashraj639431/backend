@@ -12,4 +12,5 @@ const dbConnect = () => {
     console.log("Database Error");
   }
 };
+
 module.exports = dbConnect;

@@ -388,7 +388,7 @@ const updateProductQuantityFromCart = asyncHandler(async (req, res) => {
 const createOrder = asyncHandler(async (req, res) => {
   const {
     shippingInfo,
-    orderItem,
+    orderItems,
     totalPrice,
     totalPriceAfterDiscount,
     paymentInfo,
@@ -397,7 +397,7 @@ const createOrder = asyncHandler(async (req, res) => {
   try {
     const order = await Order.create({
       shippingInfo,
-      orderItem,
+      orderItems,
       totalPrice,
       totalPriceAfterDiscount,
       paymentInfo,

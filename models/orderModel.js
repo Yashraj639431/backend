@@ -31,13 +31,13 @@ var orderSchema = new mongoose.Schema(
       },
       other: {
         type: String,
-        required: true,
       },
       pincode: {
         type: Number,
         required: true,
       },
     },
+
     paymentInfo: {
       razorpayOrderId: {
         type: String,
@@ -48,6 +48,7 @@ var orderSchema = new mongoose.Schema(
         required: true,
       },
     },
+
     orderItems: [
       {
         product: {

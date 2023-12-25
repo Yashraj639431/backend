@@ -33,10 +33,10 @@ router.put("/password", authMiddleware, updatePassword); // Update a Password
 router.post("/login", loginUserCtrl); // Login a User
 router.post("/admin-login", loginAdmin); // Admin Login
 router.post("/cart", authMiddleware, userCart); // Cart
+router.post("/cart/create-order", authMiddleware, createOrder); // Create Order
 router.post("/order/checkout", authMiddleware, checkout);
 router.post("/order/paymentVerification", authMiddleware, paymentVerification);
 // router.post("/cart/applyCoupon", authMiddleware, applyCoupon); // Apply Coupon
-router.post("/cart/create-order", authMiddleware, createOrder); // Create Order
 router.get("/all-users", getAllUser); // Get all User
 // router.get("/get-orders", authMiddleware, getOrders); // Get Orders
 // router.get("/getallorders", authMiddleware, isAdmin, getallOrders); // Get all Orders
